@@ -1,7 +1,5 @@
 #Tuples are created with brackets and comma to separate values
 
-from numpy import str_
-
 
 tuple1 = ("Cristian", 30, "Rio de Janeiro")
 print(tuple1)
