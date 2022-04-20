@@ -1,1 +1,0 @@
-# Dissecando uma variável
