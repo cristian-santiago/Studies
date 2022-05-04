@@ -7,7 +7,7 @@ import operator
 prd = product([10, 20], [30, 40]) # it can be included a repetition, repeat = number
 print(list(prd)) #converting iterator to a list for printing.
 
-#Permutations()  can return successive length permutations of elements in an itrable.
+#Permutations()  can return successive length permutations of elements in an iterable.
 
 perm = permutations(["a", "b", "c"])
 #It's possible to change the lenght of the permutation tuples, it must be always < than the max elements.
@@ -34,7 +34,7 @@ print(list(acc2))
 acc3 = accumulate([1, 5, 7, 3, 2, 2, 9, 8, 4], func=max)
 print(list(acc3))
 
-#Groupby make an iterator that returns consecutive keus and groups from the iterable.
+#Groupby make an iterator that returns consecutive keys and groups from the iterable.
 #Use functions or lambda for better resolution
 
 gpb = groupby([1, 2, 3, 4 , 5], key= lambda x: x < 3)
@@ -54,7 +54,7 @@ for i in count(10):
         break
 print("")
 
-#Cycle() Repeat the elements and return to begining duing a cycle;
+#Cycle() Repeat the elements and return to begining during a cycle;
 
 sum = 0
 for i in cycle([1, 2, 3]):
