@@ -35,6 +35,8 @@ file_handler.setFormatter(file_format)
 logger.addHandler(stream_handler)
 logger.addHandler(file_handler)
 
+#Filter example
+
 class InfoFilter(logging.Filter):
     
     def filter(self, record):
@@ -46,6 +48,7 @@ logger.addHandler(stream_handler)
 logger.warning('Warning msg')
 logger.error('Error msg')
 logger.info('Info msg')
+
 
 
 
