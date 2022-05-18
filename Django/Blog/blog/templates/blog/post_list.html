@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %} <!-- This line will take the informations from base.html-->
+
+{% block title%} My first blog {% endblock %} <!-- this line will give a name to the tittle-->
+
+<!-- the code below may have all the codes for the page-->
+{% block content %}
+
+    {% for post in post_list %}
+        <article>
+            <h2> 
+                <a href=" {{post.get_absolute_url }}">
+                    {{ post.title}}
+                </a> 
+
+            </h2>
+            <p clsas = 'date'>
+                Published in {{ post.created }} by {{ post.author }}
+
+            </p>
+            {{ post.body|linebreaks|truncatewords:10 }}   
+        </article>
+
+    {% endfor %}
+{% endblock %}
