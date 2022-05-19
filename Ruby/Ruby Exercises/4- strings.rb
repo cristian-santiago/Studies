@@ -38,4 +38,7 @@ puts txt.upcase() # Convert the whole txt to UPPERCASE
 
 puts txt.downcase() # Convert the whole txt to LOWERCASE
 
+p txt.split # Will return the sentence separately word by word
+
+puts txt[50] # Show the letter on index 50
 
