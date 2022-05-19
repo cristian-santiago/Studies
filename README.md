@@ -30,7 +30,7 @@
 
 Directory | Description
 ----------|-------------------------------------------
-[**Django**](https://github.com/cristian-santiago/Studies/tree/main/Django/project_agenda)    | A Python robust and fast web framework. 
+[**Django**](https://github.com/cristian-santiago/Studies/tree/main/Django)    | A Python robust and fast web framework. 
 [**Flask**](https://github.com/cristian-santiago/Studies/tree/main/Flask/hello_flask)     | A small and fast web framework in Python.
 [**Html&Css**](https://github.com/cristian-santiago/Studies/tree/main/Html&Css)  | Markup language to build web pages.
 [**MySQL**](https://github.com/cristian-santiago/Studies/tree/main/MySQL)    | Structured Query Language for database.
