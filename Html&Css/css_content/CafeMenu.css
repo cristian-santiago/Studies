@@ -3,6 +3,12 @@ h1, h2, p {
     text-align: center;
 }
 
+hr {
+
+    height: 2px;
+    background-color: brown;
+    border-color: brown;
+}
 
 body {
     background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
@@ -11,9 +17,8 @@ body {
 }
 
 h1, h2 {
-    font-family: impact, sans-serif;
-    font-style: normal;
-    font-weight: 700;
+    font-family: Impact, sans-serif;
+
 }
 
 h1 {
@@ -24,7 +29,7 @@ h2 {
     font-size: 30px;
 }
 
-.est  {
+.italic  {
 
     font-style: italic;
 }
@@ -51,5 +56,8 @@ h2 {
 .item p {
 
     display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
 
 }
