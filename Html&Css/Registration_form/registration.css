@@ -4,12 +4,85 @@ body {
     margin: 0;
     background-color: #1b1b32;
     color: #f5f6f7;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
 
+}
 
+h1, p{
+    margin: 1em auto;
+    text-align: center;
+}
+form{
+    
+    margin: 0 auto;
+    max-width: 500px;
+    width: 60vw;
+    min-width: 300px;
+    padding: 2em; /*Add more space to the form (below the submit buttom) */
+}
+
+fieldset{
+    border: 0; /*remove the fieldset border*/
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+fieldset:not(:last-of-type){ /* Will apply changes on all fieldset but the last element*/
+    border-bottom: 3px solid #3b3b4f;
 }
 
 label {
 
     display: block;
     margin: 0.5rem 0;
+}
+
+input, textarea, select{ /* Change the style from the field area*/
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    min-height: 2em;
+}
+
+input, textarea{
+    background-color: #0a0a23;
+    border: 1px solid #0a0a23;
+    color: #ffffff;
+   
+}
+
+.inline{ /*Style the round button type and checkbox */
+    width: unset; /* Remove the earlier rule which set all the input to 100% width */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+input[type="submit"]{ /* Change only the attribute selected */
+    display: block;
+    min-width: 300px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: white;
+    border-radius: 2em;
+
+}
+
+input[type="file"]{ /*Correct the padding from the file field*/
+    padding: 1px 2px;
+}
+
+a {
+    color: #dfdfe2;
 }
