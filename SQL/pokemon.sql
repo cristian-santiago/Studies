@@ -48,3 +48,8 @@ db.pokemon.find(
         }        
     ],
 })
+
+-- This query below will set another field called StartsWithO inside the first document that matches with the name O.
+db.pokemon.updateOne({"name": /^O/},{$set:{"StartsWithO": true}})
+
+db.pokemon.updateMany({"name": /^O/},{$set:{"StartsWithO": true}})
