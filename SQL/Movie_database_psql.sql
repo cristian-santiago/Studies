@@ -1,3 +1,5 @@
+-- PostgreSQL 
+
 -- Creating the directors table;
 
 CREATE TABLE directors (
