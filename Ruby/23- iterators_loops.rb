@@ -25,3 +25,31 @@ fruits.each {|f| p f} # One line iterator method, used basically with small bloc
 ''' for i in 0..10
     p i
  end'''
+
+ # Nested iterators: 
+
+ teams = {
+
+        "Real Madrid": {
+            "goleiro": "Cortua",
+            "zagueiro": "Militão",
+            "meio de campo": "Casemiro",
+            "Atacante": "Vinicius Jr"
+
+        },
+        "França": {
+
+            "goleiro": "Dounarama",
+            "zagueiro": "Marquinhos",
+            "meio de campo": "Messi",
+            "Atacante": "Neymar"
+        }
+
+ }
+
+ teams.each do |t, p|
+    p t
+    p.each do |position, player|
+        p "#{player} holds the #{position} position."
+    end
+ end
