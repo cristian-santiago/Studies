@@ -53,3 +53,17 @@ db.pokemon.find(
 db.pokemon.updateOne({"name": /^O/},{$set:{"StartsWithO": true}})
 
 db.pokemon.updateMany({"name": /^O/},{$set:{"StartsWithO": true}})
+
+-- Updates - 90. Removing fields with $unset
+
+db.pokemon.updateOne({"name": /^O/},{$unset:{"StartsWithO": true}})
+
+db.pokemon.updateMany({"name": /^O/},{$unset:{"StartsWithO": true}})
+
+-- Increment with $inc and $mul
+
+
+db.pokemon.updateMany({"types" : "Fire"}, {$inc : {"attack": 10 }}) -- Increment 10 points on every Fire Pokemon atk (- to decrease)
+
+
+db.pokemon.updateMany({"types" : "Fire"}, {$mul : {"attack" : 3 }}) -- Multiply every Fire Pokemon atk for 3 ( to divide use )
