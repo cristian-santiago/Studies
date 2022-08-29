@@ -67,3 +67,11 @@ db.pokemon.updateMany({"types" : "Fire"}, {$inc : {"attack": 10 }}) -- Increment
 
 
 db.pokemon.updateMany({"types" : "Fire"}, {$mul : {"attack" : 3 }}) -- Multiply every Fire Pokemon atk for 3 ( to divide use )
+
+-- Limits with $min and $max
+
+-- Set the Pokemon with atk over 150pts with min value of 150pts ()
+db.pokemon.updateMany({"types" "Fire", {$min : {"attack":150}}})
+
+-- Set all the Pokemons with atk below 75 with the max value of 75
+db.pokemon.updateMany({}, {$max : {"attack": 75}})

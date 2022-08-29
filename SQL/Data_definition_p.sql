@@ -1,4 +1,4 @@
--- PostgreSQL - Data Definition Language
+-- PostgreSQL - Data Definition Language (Movies database)
 
 
 -- Creating the directors table;
