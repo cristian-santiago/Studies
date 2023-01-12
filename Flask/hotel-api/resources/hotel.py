@@ -5,6 +5,7 @@ import sqlite3
 
 
 def normalize_path_params(
+    # Normalizando dados passados via parâmetro de consulta
     cidade=None,
     estrelas_min = 0,
     estrelas_max = 5,
@@ -15,69 +16,81 @@ def normalize_path_params(
 
     if cidade:
         return {
-            'estrelas_min': estrelas_min,
-            'estrelas_max': estrelas_max,
-            'diaria_min' : diaria_min,
-            'diaria_max' : diaria_max,
-            'cidade': cidade,
-            'limit' : limit,
-            'offset' : offset
+            "estrelas_min": estrelas_min,
+            "estrelas_max": estrelas_max,
+            "diaria_min" : diaria_min,
+            "diaria_max" : diaria_max,
+            "cidade": cidade,
+            "limit" : limit,
+            "offset" : offset
         }
     
     
     return {
-        'estrelas_min': estrelas_min,
-        'estrelas_max': estrelas_max,
-        'diaria_min' : diaria_min,
-        'diaria_max' : diaria_max,        
-        'limit' : limit,
-        'offset' : offset
+        "estrelas_min": estrelas_min,
+        "estrelas_max": estrelas_max,
+        "diaria_min" : diaria_min,
+        "diaria_max" : diaria_max,        
+        "limit" : limit,
+        "offset" : offset
     }
 
 
+# Recebendo parâmetros de consulta
 
 path_params = reqparse.RequestParser()
-path_params.add_argument('cidade', type=str)
-path_params.add_argument('estrelas_min', type=float)
-path_params.add_argument('estrelas_max', type=float)
-path_params.add_argument('diaria_min', type=float)
-path_params.add_argument('diaria_max0', type=float )
-path_params.add_argument('limit',type=float)
-path_params.add_argument('offset', type=float)
+path_params.add_argument("cidade", type=str,location="values")
+path_params.add_argument("estrelas_min", type=float,location="values")
+path_params.add_argument("estrelas_max", type=float,location="values")
+path_params.add_argument("diaria_min", type=float,location="values")
+path_params.add_argument("diaria_max0", type=float ,location="values")
+path_params.add_argument("limit",type=float,location="values")
+path_params.add_argument("offset", type=float,location="values")
 
 
 class Hoteis(Resource):
     def get(self):
 
-        connection = sqlite3.connect('hotel.db')
+
+# Aplicando filtros avançados com parâmetros de consulta
+
+        connection = sqlite3.connect('/home/cdasilva/Área de Trabalho/Studies/Flask/hotel-api/banco.db')
         cursor = connection.cursor()      
 
-
+        # Parâmetros de consulta via Path
         dados = path_params.parse_args()
         dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None} #received only the valida data from path_params
         parametros = normalize_path_params(**dados_validos)
 
-        if not parametros.get('cidade'):
-            consulta = """
-            SELECT * FROM hoteis
-            WHERE (estrelas > ? and estrelas < ?)
-            AND (diaria > ? and diaria < ?)
-            LIMIT ? OFFSET ?            
-            """
-            tupla = tupla([parametros[chave] for chave in parametros])
+        if not parametros.get("cidade"):
+            consulta = " SELECT * FROM hoteis \
+            WHERE (estrelas > ? and estrelas < ?) \
+            AND (diária > ? and diária < ?) \
+            LIMIT ? OFFSET ? "
+
+            tupla = tuple([parametros[chave] for chave in parametros])
             resultado = cursor.execute(consulta, tupla)
         else:
-            consulta = """
-            SELECT * FROM hoteis
-            WHERE (estrelas > ? and estrelas < ?)
-            AND (diaria > ? and diaria < ?)
-            AND cidade = ? LIMIT ? OFFSET ?            
-            """
-            tupla = tupla([parametros[chave] for chave in parametros])
+            consulta = "SELECT * FROM hoteis \
+            WHERE (estrelas > ? and estrelas < ?) \
+            and (diária > ? and diária < ?) \
+            and cidade = ? LIMIT ? OFFSET ?"
+            tupla = tuple([parametros[chave] for chave in parametros])
             resultado = cursor.execute(consulta, tupla)
         hoteis = []
+
         for i in resultado:
-            hoteis.append()
+            hoteis.append({
+            "hotel_id": i[0],
+            "nome": i[1],
+            "estrelas" : i[2],
+            "diária" : i[3],
+            "cidade" : i[4]
+
+            })
+        
+        return {"hoteis" : hoteis} 
+        
            
         #return {'hoteis': [hotel.json() for hotel in HotelModel.query.all()]} #List comprehension
 
