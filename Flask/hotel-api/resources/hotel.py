@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
+from models.site import SiteModel
 from flask_jwt_extended import jwt_required
 from resources.filttros import normalize_path_params, consulta_sem_ciade, consulta_com_cidade
 
@@ -88,6 +89,10 @@ class Hotel(Resource):
 
         dados = Hotel.argumentos.parse_args()
         hotel = HotelModel(hotel_id, **dados)
+
+        if not SiteModel.find_by_id(dados['site_id']):
+            return {"message": "Hotel must be associated to a valid site id."}, 400 #bad request
+
         try:
             hotel.save_hotel()
         except:

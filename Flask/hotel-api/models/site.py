@@ -22,7 +22,14 @@ class SiteModel(banco.Model):
 
     @classmethod
     def find_site(cls, url):
-        site = cls.query.filter_by(url=url).first() #SELECT * FROM hoteis WHERE hotel_id = hotel_id LIMIT=1;
+        site = cls.query.filter_by(url=url).first() #SELECT * FROM sites WHERE url = url LIMIT=1;
+        if site:
+            return site
+        return None
+
+    @classmethod
+    def find_by_id(cls, site_id):
+        site = cls.query.filter_by(site_id=site_id).first() #SELECT * FROM sites WHERE site_id = site_id LIMIT=1;
         if site:
             return site
         return None
@@ -33,5 +40,8 @@ class SiteModel(banco.Model):
 
 
     def delete_site(self):
+        # deletando todos os sites associados ao site
+        [hotel.delete_hotel() for hotel in self.hoteis]
+        # deleta o site
         banco.session.delete(self)
         banco.session.commit()
