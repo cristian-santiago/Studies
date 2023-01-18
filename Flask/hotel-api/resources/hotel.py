@@ -126,5 +126,5 @@ class Hotel(Resource):
         
 
         # Method to delete/remove an item from a json list
-        #hoteis = [hotel for hotel in hoteis if hotel['hotel_id'] != hotel_id]        
+        #hoteis = [hotel for hotel in hoteis if hotel['hotel_id'] != hotel_id]    # list comprehension    
         

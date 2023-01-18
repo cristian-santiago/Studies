@@ -1,5 +1,6 @@
 
 
+
 def normalize_path_params(
     # Normalizando dados passados via parâmetro de consulta
     cidade=None,
