@@ -43,7 +43,7 @@ path_params.add_argument("cidade", type=str,location="values")
 path_params.add_argument("estrelas_min", type=float,location="values")
 path_params.add_argument("estrelas_max", type=float,location="values")
 path_params.add_argument("diaria_min", type=float,location="values")
-path_params.add_argument("diaria_max0", type=float ,location="values")
+path_params.add_argument("diaria_max", type=float ,location="values")
 path_params.add_argument("limit",type=float,location="values")
 path_params.add_argument("offset", type=float,location="values")
 
@@ -54,7 +54,7 @@ class Hoteis(Resource):
 
 # Aplicando filtros avançados com parâmetros de consulta
 
-        connection = sqlite3.connect('/home/cdasilva/Área de Trabalho/Studies/Flask/hotel-api/banco.db')
+        connection = sqlite3.connect('/home/cdasilva/Área de Trabalho/Studies/Flask/hotel-api/instance/banco.db')
         cursor = connection.cursor()      
 
         # Parâmetros de consulta via Path
@@ -64,16 +64,16 @@ class Hoteis(Resource):
 
         if not parametros.get("cidade"):
             consulta = " SELECT * FROM hoteis \
-            WHERE (estrelas > ? and estrelas < ?) \
-            AND (diária > ? and diária < ?) \
+            WHERE (estrelas >= ? and estrelas <= ?) \
+            AND (diária >= ? and diária <= ?) \
             LIMIT ? OFFSET ? "
 
             tupla = tuple([parametros[chave] for chave in parametros])
             resultado = cursor.execute(consulta, tupla)
         else:
             consulta = "SELECT * FROM hoteis \
-            WHERE (estrelas > ? and estrelas < ?) \
-            and (diária > ? and diária < ?) \
+            WHERE (estrelas >= ? and estrelas <= ?) \
+            and (diária >= ? and diária <= ?) \
             and cidade = ? LIMIT ? OFFSET ?"
             tupla = tuple([parametros[chave] for chave in parametros])
             resultado = cursor.execute(consulta, tupla)
