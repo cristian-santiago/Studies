@@ -51,7 +51,8 @@ class Hoteis(Resource):
             "nome": i[1],
             "estrelas" : i[2],
             "diária" : i[3],
-            "cidade" : i[4]
+            "cidade" : i[4],
+            "site_id" : i[5]
 
             })
         
@@ -67,6 +68,7 @@ class Hotel(Resource):
     argumentos.add_argument('estrelas', type=float, required=True, help="The field 'estrlas' must be filled.")
     argumentos.add_argument('diária')
     argumentos.add_argument('cidade')
+    argumentos.add_argument('site_id', type=int, required=True, help= "Every Hotel needs a linked site within.")
 
  
     #GET
